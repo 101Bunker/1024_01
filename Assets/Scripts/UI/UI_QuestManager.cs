@@ -8,6 +8,7 @@ using TMPro;
 public class UI_QuestManager : MonoBehaviour
 {
     public GameObject questPopUp; //퀘스트가 추가되면 리스트로 바꿔야 함.
+    public GameObject questPopUpClear;
     public GameObject questBar;
     public GameObject toggleGrp_bar;    //퀘스트가 추가되면 리스트로 바꿔야 함.
     List<GameObject> toggleList = new List<GameObject>();
@@ -53,12 +54,17 @@ public class UI_QuestManager : MonoBehaviour
         //사용자가 오브젝트가 있는 위치로 가서(오브젝트들이 active 상태이면) 퀘스트 팝업창 열기
         if (!locationObjIsActive && questList[0].locationObj.gameObject.activeInHierarchy)
         {
+            locationObjIsActive = !locationObjIsActive;
+
             uiManager.uiAnim.Play("PopUpQuest_open");
             //questPopUp.SetActive(true);
             //퀘스트마다 이미지랑 텍스트 바꿔줌.
+
             questPopUp.transform.GetChild(1).GetComponent<Text>().text = questList[0].title;
             questPopUp.transform.GetChild(2).GetComponent<Image>().sprite = questList[0].image;
-            locationObjIsActive = !locationObjIsActive;
+            questPopUpClear.transform.GetChild(2).GetComponent<Image>().sprite = questList[0].image;
+            questPopUpClear.transform.GetChild(1).GetComponent<Text>().text = questList[0].clearTitle;
+            
 
             currentCount = questList[0].couponCharactors.Count;
         }
@@ -68,7 +74,7 @@ public class UI_QuestManager : MonoBehaviour
         RaycastHit hitinfo;
         if (Physics.Raycast(Camera.main.transform.position, ray.direction, out hitinfo))
         {
-            if (Input.GetMouseButtonDown(0) /*&& couponCharactors.Contains(hitinfo.transform.gameObject)*/)
+            if (Input.GetMouseButtonDown(0) && questList[0].couponCharactors.Contains(hitinfo.transform.gameObject))
             {
                 Destroy(hitinfo.transform.parent.transform.gameObject);
                 GotOne();
@@ -91,8 +97,9 @@ public class UI_QuestManager : MonoBehaviour
             //퀘스트 다 채우면 쿠폰 UI 나옴
             if (count == currentCount)
             {
-                uiManager.clearUI_Quest1.SetActive(false);
-                uiManager.clearUI_Quest1.SetActive(true);
+                uiManager.uiAnim.Play("PopUpQuestClear_open");
+                //uiManager.clearUI_Quest1.SetActive(false);
+                //uiManager.clearUI_Quest1.SetActive(true);
                 uiManager.inventory_0.SetActive(true);
             }
         }
@@ -129,8 +136,10 @@ public class UI_QuestManager : MonoBehaviour
                     {
                         GameObject toggle = Instantiate(toggleGrp.transform.GetChild(0).gameObject);
                         toggle.transform.SetParent(toggleGrp.transform);
+                        toggle.transform.localScale=new Vector3(1, 1, 1);
                         GameObject toggle_panel = Instantiate(toggleGrp_bar.transform.GetChild(0).gameObject);
                         toggle_panel.transform.SetParent(toggleGrp_panel.transform);
+                        toggle_panel.transform.localScale=new Vector3(1, 1, 1);
                     }
                 }
             }

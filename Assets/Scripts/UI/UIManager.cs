@@ -8,7 +8,6 @@ public class UIManager : MonoBehaviour
    public Animator uiAnim;
    // public UI_QuestManager uiQM;
 
-    public GameObject clearUI_Quest1;
     public GameObject inventory_0;
     public GameObject userName;
     void Awake()
