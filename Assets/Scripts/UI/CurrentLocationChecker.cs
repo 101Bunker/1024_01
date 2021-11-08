@@ -16,7 +16,8 @@ public class CurrentLocationChecker : MonoBehaviour
             print(curInt);
             questManager.questNum = curInt;
             questManager.QuestPopUpOpen();
-            other.GetComponent<BoxCollider>().enabled = false;
+            other.GetComponent<CapsuleCollider>().enabled = false;
+            other.GetComponent<MeshRenderer>().enabled = false;
         }
     }
 }

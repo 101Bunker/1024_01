@@ -8,12 +8,13 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: New Material
-  m_Shader: {fileID: 4800000, guid: 3a74f10861cf4644cb585676682180ed, type: 3}
-  m_ShaderKeywords: 
+  m_Shader: {fileID: 4800000, guid: 65c158b813be00a42a09acfef11d1dc2, type: 3}
+  m_ShaderKeywords: _DETAIL_MULX2 _EMISSIONUSE_ON _NORMALMAP _REFTYPE_REF _SPECTYPE_NOSPEC
+    _USENORMAL_ON _USESHADOW_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -51,6 +52,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Emission:
+        m_Texture: {fileID: 2800000, guid: 7270cc2c17c42504a8138728fd257a45, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -71,12 +76,20 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Normal:
+        m_Texture: {fileID: 2800000, guid: d9bbaeafe43ea934785402593ff852bc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OutlineMask:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _PBR:
+        m_Texture: {fileID: 2800000, guid: 397200bcb21072040b2406e424a35bdb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
@@ -134,6 +147,7 @@ Material:
     - _DissolveProgress: 0
     - _DissolveStrength: 1
     - _DstBlend: 0
+    - _EMISSIONUSE: 1
     - _EmissionAudioLinkChannel: 0
     - _EmissionToDiffuse: 0
     - _FadeDither: 0
@@ -152,6 +166,7 @@ Material:
     - _Metallic: 0.226
     - _Mode: 0
     - _NormalMapMode: 0
+    - _NormalPow: 1
     - _OcclusionIntensity: 0.866
     - _OcclusionMode: 0
     - _OcclusionStrength: 1
@@ -161,8 +176,12 @@ Material:
     - _OutlineUVSelect: 2
     - _OutlineWidth: 1
     - _Parallax: 0.02
+    - _REFTYPE: 1
     - _ReflectionBlendMode: 0
     - _ReflectionMode: 0
+    - _ReflectionMul: 1.39
+    - _ReflectionPow: 1.1
+    - _ReflectionPow_InShadow: 1
     - _Reflectivity: 0.601
     - _RimAlbedoTint: 0
     - _RimAttenEffect: 1
@@ -171,6 +190,7 @@ Material:
     - _RimRange: 0.7
     - _RimSharpness: 0.1
     - _RimThreshold: 0.1
+    - _SPECTYPE: 0
     - _SSDistortion: 1
     - _SSPower: 1
     - _SSScale: 1
@@ -183,6 +203,8 @@ Material:
     - _ShadowRimThreshold: 0.833
     - _ShadowSharpness: 0.605
     - _SmoothnessTextureChannel: 0
+    - _SpecMul: 10
+    - _SpecPow: 200
     - _SpecularAlbedoTint: 0.21
     - _SpecularArea: 0.176
     - _SpecularHighlights: 1
@@ -193,6 +215,9 @@ Material:
     - _StencilComp: 0
     - _StencilOp: 0
     - _TilingMode: 0
+    - _USENORMAL: 1
+    - _USENORMALPOW: 0
+    - _USESHADOW: 1
     - _UVSec: 0
     - _UVSetAlbedo: 0
     - _UVSetClipMap: 0
