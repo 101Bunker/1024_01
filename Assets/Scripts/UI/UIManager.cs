@@ -4,18 +4,16 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
-{  
-   public Animator uiAnim;
-   // public UI_QuestManager uiQM;
+{
+    [HideInInspector]
+    public Animator uiAnim;
 
-    public GameObject inventory_0;
     public GameObject userName;
     void Awake()
     {
-    //    uiQM.enabled = true;
         uiAnim = GetComponent<Animator>();
-    }  
-  
+    }
+
 
     #region Button Functions
     bool clickedQuest;
@@ -23,60 +21,50 @@ public class UIManager : MonoBehaviour
     bool clickedMy;
 
     public GameObject[] panels;
+
+    public void OnClickButton(string thisButton)
+    {
+
+    }
     public void OnClickQuest()
     {
         clickedQuest = !clickedQuest;
+        clickedInven = false;
+        clickedMy = false;
         if (clickedQuest)
         {
-            panels[0].SetActive(true);
-            panels[1].SetActive(false);
-            panels[2].SetActive(false);
             uiAnim.Play("Panel_Quest_up");
-
-            clickedInven = false;
-            clickedMy = false;
         }
         else
         {
-            //  panels[0].SetActive(false);
             uiAnim.Play("Panel_Quest_down");
         }
     }
     public void OnClickInventory()
     {
         clickedInven = !clickedInven;
+        clickedQuest = false;
+        clickedMy = false;
         if (clickedInven)
         {
-            panels[0].SetActive(false);
-            panels[1].SetActive(true);
-            panels[2].SetActive(false);
             uiAnim.Play("Panel_Inventory_up");
-
-            clickedMy = false;
-            clickedQuest = false;
         }
         else
         {
-            //  panels[0].SetActive(false);
             uiAnim.Play("Panel_Inventory_down");
         }
     }
     public void OnClickMy()
     {
         clickedMy = !clickedMy;
+        clickedInven = false;
+        clickedQuest = false;
         if (clickedMy)
         {
-            panels[0].SetActive(false);
-            panels[1].SetActive(false);
-            panels[2].SetActive(true);
             uiAnim.Play("Panel_My_up");
-
-            clickedQuest = false;
-            clickedInven = false;
         }
         else
         {
-            //  panels[0].SetActive(false);
             uiAnim.Play("Panel_My_down");
         }
     }

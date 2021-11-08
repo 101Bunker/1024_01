@@ -7,26 +7,15 @@ public class SceneChanger : MonoBehaviour
 {
     public GameObject agree, yourGame;
 
-
-    public void LoadNextScene()
+    public void ChangeScene(string name)
     {
-        // 현재 씬 정보를 가지고 온다.
-        Scene scene = SceneManager.GetActiveScene();
-
-        // 현재 씬의 빌드 순서를 가지고 온다.
-        int curScene = scene.buildIndex;
-
-        // 현재 씬 바로 다음씬을 가져오기 위해 +1을 해준다.
-        int nextScene = curScene + 1;
-
-        // 다음 씬을 불러온다
-        SceneManager.LoadScene(nextScene);
+        SceneManager.LoadScene(name);
     }
 
     public void OnBtnDownNextPage()
     {
-        agree.SetActive(false);
-        agree.SetActive(true);
-        yourGame.SetActive(false);
+            agree.SetActive(false);
+            agree.SetActive(true);
+            yourGame.SetActive(false);
     }
 }
