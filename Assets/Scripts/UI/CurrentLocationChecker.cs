@@ -8,6 +8,7 @@ public class CurrentLocationChecker : MonoBehaviour
     [SerializeField] UI_QuestManager questManager;
     int curInt;
 
+    [SerializeField] GameObject star;
     private void OnTriggerEnter(Collider other)
     {
         if (storeList.Contains(other.gameObject))
@@ -18,6 +19,7 @@ public class CurrentLocationChecker : MonoBehaviour
             questManager.QuestPopUpOpen();
             other.GetComponent<CapsuleCollider>().enabled = false;
             other.GetComponent<MeshRenderer>().enabled = false;
+            star.SetActive(false);
         }
     }
 }

@@ -6396,3 +6396,23 @@ Find Image
 
 0.06910693,-0.67277896,0.736609,0,0.018909302,0.73912495,0.6733029,0,-0.99743,-0.032601144,0.063800424,0,-11.033296,152.26965,-56.70848,1
 
+VPSSDK Version : 0.9.0
+
+Enter Tracking thread
+
+Enter Tracking thread
+
+VPSSDK Version : 0.9.0
+
+Enter Tracking thread
+
+deviceName : HD Webcam, deviceModel : 
+
+Enter Tracking thread
+
+VPSFusionLogic::_initialize
+
+Find Image
+
+0.16893834,-0.503726,0.8471836,0,0.029748322,0.86175233,0.50645626,0,-0.9851776,-0.060357597,0.16056801,0,-24.407455,136.25903,-84.564285,1
+
