@@ -7,14 +7,43 @@ public class UIManager : MonoBehaviour
 {
     [HideInInspector]
     public Animator uiAnim;
+    UI_QuestManager questManager;
+    DonationManager donationManager;
 
     public GameObject userName;
     void Awake()
     {
         uiAnim = GetComponent<Animator>();
+        questManager = GetComponent<UI_QuestManager>();
+        donationManager = GetComponent<DonationManager>();
     }
 
+    private void Update()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hitinfo;
 
+        if (Physics.Raycast(Camera.main.transform.position, ray.direction, out hitinfo))
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                 //쿠폰 캐릭터 선택했을 때
+                if (questManager.questList[questManager.questNum].couponCharactors.Contains(hitinfo.transform.gameObject))
+                {
+                    hitinfo.transform.parent.GetComponent<ParticleManager>().PlayParticles();
+                    Destroy(hitinfo.transform.parent.transform.gameObject, 0.5f);
+                    questManager.GotOne();
+                }
+
+                //사랑의 열매 클릭했을 때
+                if(hitinfo.transform.gameObject== donationManager.donationCollider)
+                {
+                    donationManager.ClickedDonationObj();
+                }
+            }
+        }
+
+    }
     #region Button Functions
     bool clickedQuest;
     bool clickedInven;

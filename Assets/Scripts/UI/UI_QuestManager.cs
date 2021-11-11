@@ -29,39 +29,20 @@ public class UI_QuestManager : MonoBehaviour
 
     UIManager uiManager;
 
-
     //UI항목들 크기 맞추기 위해 추가함 //모바일 빌드시엔 안해줘도 되지만 디스플레이 크기에 따라 변할 수 있어서 localScale 수정해야함.
     Vector3 one = new Vector3(1, 1, 1);
 
-    #region 캐릭터 먹는 것 관련
+
     void Awake()
     {
-        //퀘스트 별로 쿠폰 캐릭터들 리스트화
-        for (int questListCount = 0; questListCount < questList.Count; questListCount++)
-        {
-            for (int i = 0; i < questList[questListCount].locationObj.transform.childCount; i++)
-            {
-                //questList[questListCount].couponCharactors.Add(questList[questListCount].locationObj.transform.GetChild(i).transform.gameObject);
-                //questList[questListCount].couponCharactors[i].transform.parent.gameObject.SetActive(false);
+        //퀘스트마다 쿠폰 캐릭터들 리스트화
+        ListingQuest();
 
-                //콜라이더를 가진 것들 체크(캐릭터들은 메쉬콜라이더를 가져야 함(update에서 hitinfo랑 일치하는지 체크해야해서))
-                for (int j = 0; j < questList[questListCount].locationObj.transform.GetChild(j).transform.childCount; j++)
-                {
-                    if (questList[questListCount].locationObj.transform.GetChild(j).transform.GetChild(j).GetComponent<MeshCollider>() != null)
-                    {
-                        questList[questListCount].couponCharactors.Add(questList[questListCount].locationObj.transform.GetChild(i).transform.GetChild(j).gameObject);
-                        questList[questListCount].locationObj.transform.GetChild(i).transform.GetChild(j).transform.parent.gameObject.SetActive(false);
-                    }
-                }
-            }
-        }
         uiManager = GetComponent<UIManager>();
     }
-    //public bool locationObjIsActive;
 
-
+    #region Quest 팝업/수락/...
     int currentCount;
-
 
     string questTitle;
     string questClearTitle;
@@ -83,49 +64,13 @@ public class UI_QuestManager : MonoBehaviour
 
         currentCount = questList[questNum].couponCharactors.Count;
     }
-    void Update()
-    {
-        //오브젝트 터치하면 퀘스트 바의 토글 +1하고, 오브젝트 삭제
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hitinfo;
-        if (Physics.Raycast(Camera.main.transform.position, ray.direction, out hitinfo))
-        {
-            if (Input.GetMouseButtonDown(0) && questList[questNum].couponCharactors.Contains(hitinfo.transform.gameObject))
-            {
-                Destroy(hitinfo.transform.parent.transform.gameObject);
-                GotOne();
-            }
-        }
-    }
-    int count;
-    public void GotOne()
-    {
-        if (count < currentCount)
-        {
-            //퀘스트 바에 토글 +1
-            toggles[count].interactable = true;
-
-            //퀘스트 패널에서 퀘스트 각각에 토글+1
-            questList[questNum].toggles[count].interactable = true;
-            count += 1;
-
-            //퀘스트 다 채우면 쿠폰 UI 나옴
-            if (count == currentCount)
-            {
-                uiManager.uiAnim.Play("PopUpQuestClear_open");
-
-                GameObject list_Inventory = Instantiate(inventoryList);
-                list_Inventory.transform.SetParent(contentInInventory);
-                list_Inventory.transform.localScale = one;
-            }
-        }
-    }
-    #endregion
     public void OnClickAcceptQuest()
     {
+        // questAccept = true;
         questBar.SetActive(true);
         questBar.transform.GetChild(1).GetComponent<Text>().text = questTitle;
 
+        //쿠폰 캐릭터 On
         for (int i = 0; i < questList[questNum].couponCharactors.Count; i++)
         {
             questList[questNum].couponCharactors[i].transform.parent.gameObject.SetActive(true);
@@ -170,4 +115,50 @@ public class UI_QuestManager : MonoBehaviour
         }
     }
 
+    int count;
+    public void GotOne()
+    {
+        if (count < currentCount)
+        {
+            //퀘스트 바에 토글 +1
+            toggles[count].interactable = true;
+
+            //퀘스트 패널에서 퀘스트 각각에 토글+1
+            questList[questNum].toggles[count].interactable = true;
+            count += 1;
+
+            //퀘스트 다 채우면 쿠폰 UI 나옴
+            if (count == currentCount)
+            {
+                uiManager.uiAnim.Play("PopUpQuestClear_open");
+
+                GameObject list_Inventory = Instantiate(inventoryList);
+                list_Inventory.transform.SetParent(contentInInventory);
+                list_Inventory.transform.localScale = one;
+            }
+        }
+    }
+    #endregion
+    void ListingQuest()
+    {
+        for (int questListCount = 0; questListCount < questList.Count; questListCount++)
+        {
+            for (int i = 0; i < questList[questListCount].locationObj.transform.childCount; i++)
+            {
+                //questList[questListCount].couponCharactors.Add(questList[questListCount].locationObj.transform.GetChild(i).transform.gameObject);
+                //questList[questListCount].couponCharactors[i].transform.parent.gameObject.SetActive(false);
+
+                //콜라이더를 가진 것들 체크(캐릭터들은 메쉬콜라이더를 가져야 함(update에서 hitinfo랑 일치하는지 체크해야해서))
+                for (int j = 0; j < questList[questListCount].locationObj.transform.GetChild(j).transform.childCount; j++)
+                {
+                    if (questList[questListCount].locationObj.transform.GetChild(j).transform.GetChild(j).GetComponent<MeshCollider>() != null)
+                    {
+                        questList[questListCount].couponCharactors.Add(questList[questListCount].locationObj.transform.GetChild(i).transform.GetChild(j).gameObject);
+                        questList[questListCount].locationObj.transform.GetChild(i).transform.GetChild(j).transform.parent.gameObject.SetActive(false);
+                    }
+                }
+
+            }
+        }
+    }
 }

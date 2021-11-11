@@ -4,22 +4,24 @@ using UnityEngine;
 
 public class CurrentLocationChecker : MonoBehaviour
 {
-    public List<GameObject> storeList = new List<GameObject>();
     [SerializeField] UI_QuestManager questManager;
+    public List<GameObject> storeList = new List<GameObject>();
     int curInt;
-
-    [SerializeField] GameObject star;
     private void OnTriggerEnter(Collider other)
     {
         if (storeList.Contains(other.gameObject))
         {
-            curInt = int.Parse(other.gameObject.tag);
-            print(curInt);
+            curInt = int.Parse(other.gameObject.tag);   //tag말고 다른 방법 생각해보기
+            print($"quest{curInt}");
             questManager.questNum = curInt;
             questManager.QuestPopUpOpen();
             other.GetComponent<CapsuleCollider>().enabled = false;
-            other.GetComponent<MeshRenderer>().enabled = false;
-            star.SetActive(false);
+
+            //별 표시 지우기
+            for (int i = 0; i < other.transform.childCount; i++)
+            {
+                other.gameObject.transform.GetChild(i).gameObject.SetActive(false);
+            }
         }
     }
 }
