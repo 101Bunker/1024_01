@@ -27,16 +27,17 @@ public class UIManager : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                 //쿠폰 캐릭터 선택했을 때
+                //쿠폰 캐릭터 선택했을 때
                 if (questManager.questList[questManager.questNum].couponCharactors.Contains(hitinfo.transform.gameObject))
                 {
                     hitinfo.transform.parent.GetComponent<ParticleManager>().PlayParticles();
                     Destroy(hitinfo.transform.parent.transform.gameObject, 0.5f);
+                    Managers.Sound.Play("eggTouch1", SoundManager.SoundType.Effect);
                     questManager.GotOne();
                 }
 
                 //사랑의 열매 클릭했을 때
-                if(hitinfo.transform.gameObject== donationManager.donationCollider)
+                if (hitinfo.transform.gameObject == donationManager.donationCollider)
                 {
                     donationManager.ClickedDonationObj();
                 }
