@@ -11,6 +11,9 @@ public class UIManager : MonoBehaviour
     DonationManager donationManager;
 
     public GameObject userName;
+
+    [SerializeField] GameObject outdoor;
+    [SerializeField] GameObject loadingUI;
     void Awake()
     {
         uiAnim = GetComponent<Animator>();
@@ -44,6 +47,11 @@ public class UIManager : MonoBehaviour
             }
         }
 
+
+        if (outdoor.activeSelf)
+        {
+            loadingUI.SetActive(false);
+        }
     }
     #region Button Functions
     bool clickedQuest;
