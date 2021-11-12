@@ -52,6 +52,8 @@ public class UI_QuestManager : MonoBehaviour
     {
         uiManager.uiAnim.Play("PopUpQuest_open");
 
+        Managers.Sound.Play("popup1", SoundManager.SoundType.Effect);
+
         questTitle = questList[questNum].title;
         questClearTitle = questList[questNum].clearTitle;
         questImage = questList[questNum].image;
