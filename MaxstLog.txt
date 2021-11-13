@@ -6936,3 +6936,71 @@ Find Image
 
 0.14555836,-0.5251855,0.83844674,0,0.037027504,0.8497707,0.5258505,0,-0.9886566,-0.045496356,0.14313754,0,-20.29985,139.00514,-82.204895,1
 
+Enter Tracking thread
+
+VPSFusionLogic::_initialize
+
+Find Image
+
+0.16857485,-0.5063838,0.84567016,0,0.03563061,0.86051816,0.50817215,0,-0.9850447,-0.055533327,0.16310449,0,-23.97095,136.59132,-84.307755,1
+
+Enter Tracking thread
+
+VPSFusionLogic::_initialize
+
+Find Image
+
+0.14756306,-0.52774364,0.8364878,0,0.04145968,0.8483036,0.5278845,0,-0.9881833,-0.043215748,0.14705835,0,-20.30993,139.33527,-81.720505,1
+
+Enter Tracking thread
+
+VPSFusionLogic::_initialize
+
+Find Image
+
+0.16136856,-0.50687593,0.8467804,0,0.027685298,0.8600128,0.5095208,0,-0.9865058,-0.058777295,0.15281203,0,-23.316767,136.62822,-84.40843,1
+
+Enter Tracking thread
+
+VPSFusionLogic::_initialize
+
+Find Image
+
+0.15031937,-0.5206787,0.8404153,0,0.03672359,0.8524283,0.52155286,0,-0.9879552,-0.04753645,0.14725767,0,-21.097893,138.44664,-82.68947,1
+
+Enter Tracking thread
+
+VPSFusionLogic::_initialize
+
+Find Image
+
+0.1626141,-0.51105297,0.8440269,0,0.030379448,0.8576004,0.51341856,0,-0.98622197,-0.057848018,0.15498343,0,-23.376482,137.1472,-83.77163,1
+
+Find Image
+
+0.09114736,-0.2449611,0.9652389,0,0.0054876446,0.96938246,0.24549446,0,-0.9958223,-0.017079284,0.089700915,0,-14.826657,107.38443,-121.48103,1
+
+deviceName : HD Webcam, deviceModel : 
+
+VPSSDK Version : 0.9.0
+
+Enter Tracking thread
+
+VPSFusionLogic::_initialize
+
+Enter Tracking thread
+
+VPSFusionLogic::_initialize
+
+Enter Tracking thread
+
+VPSFusionLogic::_initialize
+
+Enter Tracking thread
+
+VPSFusionLogic::_initialize
+
+Enter Tracking thread
+
+VPSFusionLogic::_initialize
+

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class TextController : MonoBehaviour
 {
+   // public string text;
     public string[] scenarios;
     [SerializeField] Text uiText;
 
