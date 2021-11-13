@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using PlayFab;
+using PlayFab.ClientModels;
 
 public class UIManager : MonoBehaviour
 {
@@ -10,16 +12,23 @@ public class UIManager : MonoBehaviour
     UI_QuestManager questManager;
     DonationManager donationManager;
 
-    public GameObject userName;
+    public Text userName;
 
     [SerializeField] GameObject outdoor;
     [SerializeField] GameObject loadingUI;
+
+    UserInfos userinfos;
+    GetAccountInfoResult result;
     void Awake()
     {
+        userinfos = GameObject.Find("userinfo").GetComponent<UserInfos>();
+        userName.text = $"{userinfos.userId}ดิ";
+
         uiAnim = GetComponent<Animator>();
         questManager = GetComponent<UI_QuestManager>();
         donationManager = GetComponent<DonationManager>();
     }
+
 
     private void Update()
     {

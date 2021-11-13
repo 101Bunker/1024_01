@@ -18,6 +18,7 @@ public class PlayfabManager : MonoBehaviour
     public InputField passwordInput;
 
     // Registering
+    [SerializeField] UserInfos userInfos;
     public void RegisterButton() {
         var request = new RegisterPlayFabUserRequest {
             Email = emailInput.text,
@@ -39,6 +40,7 @@ public class PlayfabManager : MonoBehaviour
             Password = passwordInput.text
         };
         PlayFabClientAPI.LoginWithEmailAddress(request, OnLoginSuccess, OnError);
+        userInfos.userId = emailInput.text;
     }
 
     void OnLoginSuccess(LoginResult result) {

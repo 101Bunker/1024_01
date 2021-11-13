@@ -23,14 +23,14 @@ public class TypeWriteEffect : MonoBehaviour
     //시작과 동시에 타이핑시작
     void Start()
     {
-     // Get_Typing(dialog_cnt, fulltext);
+      Get_Typing(dialog_cnt, fulltext);
     }
 
 
     //모든 텍스트 호출완료시 탈출
     void Update()
     {
-        Get_Typing(dialog_cnt, fulltext);
+        //Get_Typing(dialog_cnt, fulltext);
         if (text_exit == true)
         {
             gameObject.SetActive(false);
