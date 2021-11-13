@@ -21,9 +21,11 @@ public class UIManager : MonoBehaviour
     GetAccountInfoResult result;
     void Awake()
     {
-        userinfos = GameObject.Find("userinfo").GetComponent<UserInfos>();
-        userName.text = $"{userinfos.userId}ดิ";
-
+        if (GameObject.Find("userinfo") != null)
+        {
+            userinfos = GameObject.Find("userinfo").GetComponent<UserInfos>();
+            userName.text = $"{userinfos.userId}ดิ";
+        }
         uiAnim = GetComponent<Animator>();
         questManager = GetComponent<UI_QuestManager>();
         donationManager = GetComponent<DonationManager>();
