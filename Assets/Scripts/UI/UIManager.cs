@@ -52,6 +52,7 @@ public class UIManager : MonoBehaviour
                 if (hitinfo.transform.gameObject == donationManager.donationCollider)
                 {
                     donationManager.ClickedDonationObj();
+                    Managers.Sound.Play("bellTouch", SoundManager.SoundType.Effect);
                 }
             }
         }
