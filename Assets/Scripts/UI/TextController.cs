@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class TextController : MonoBehaviour
 {
-   // public string text;
     public string[] scenarios;
     [SerializeField] Text uiText;
 
@@ -53,7 +52,6 @@ public class TextController : MonoBehaviour
             lastUpdateCharacter = displayCharacterCount;
         }
     }
-
 
     void SetNextLine()
     {
